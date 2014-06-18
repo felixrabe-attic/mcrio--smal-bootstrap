@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "lodash": "^2.4.1",
-    "smal": "^0.1.0"
+    "smal": "^0.2.0"
   }
 }
