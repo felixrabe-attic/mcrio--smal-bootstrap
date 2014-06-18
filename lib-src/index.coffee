@@ -24,7 +24,8 @@ h = htmlEscape = do ->
     return string unless possible.test string
     string.replace badChars, escChar
 
-beginningOfLine = /^(?=.)/mg
+beginningOfLine = /^/mg
+emptyLines = /^\s+$/mg
 
 ind = (indent, string) ->
   string.replace beginningOfLine, indent
@@ -32,7 +33,7 @@ ind = (indent, string) ->
 indentedJoin = (array, extraIndent = '') ->
   _.map array, ([indent, text]) ->
     text.replace beginningOfLine, indent + extraIndent
-  .join('\n') + '\n'
+  .join('\n').replace(emptyLines, '') + '\n'
 
 run = (fn, dom, name = undefined, data = undefined) ->
   ob = fn name, data

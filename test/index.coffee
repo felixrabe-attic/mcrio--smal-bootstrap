@@ -50,7 +50,6 @@ describe 'smal-bootstrap', ->
         <body>
           <div class="container">
 
-
           </div> <!-- .container -->
 
           <!-- Bootstrap core JavaScript
