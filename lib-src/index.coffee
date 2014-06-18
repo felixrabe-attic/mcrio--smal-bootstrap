@@ -63,6 +63,7 @@ bootstrapConversion = ->
   navbar = ''
 
   title = 'Bootstrap'
+  stylesheet = 'navbar-static-top.css'
 
   headEnded = false
   headEnd = ->
@@ -83,7 +84,7 @@ bootstrapConversion = ->
         <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="navbar-static-top.css" rel="stylesheet">
+        <link href="#{h stylesheet}" rel="stylesheet">
 
         <!-- Just for debugging purposes. Don't actually copy this line! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -101,6 +102,9 @@ bootstrapConversion = ->
   title: ->
     __TEXT__: (name, data) -> title = data
 
+  stylesheet: ->
+    __TEXT__: (name, data) -> stylesheet = data
+
   navbar: ->
     headEnd()
     navbarClass = 'navbar navbar-default'
@@ -116,6 +120,10 @@ bootstrapConversion = ->
     fixed: ->
       navbarInsideContainer = false
       navbarClass = 'navbar navbar-default navbar-fixed-top'
+
+    inverse: ->
+      navbarInsideContainer = false
+      navbarClass = 'navbar navbar-inverse navbar-fixed-top'
 
     brand: ->
       text = ''
@@ -258,6 +266,45 @@ bootstrapConversion = ->
         </div>
       """]
       pageContent = indentedJoin jumbotron
+
+  container: ->
+    headEnd()
+
+    wrappedClass = null
+    container = []
+
+    containerContent = []
+
+    around: -> __TEXT__: (name, data) -> wrappedClass = data
+
+    header: ->
+      text = null
+      __TEXT__: (name, data) -> text = data
+      __END__: -> containerContent.push ['', "<h1>#{h text}</h1>"]
+
+    p: ->
+      cls = null
+      pContent = []
+      class: -> __TEXT__: (name, data) -> cls = data
+      br: -> pContent.push '<br>'
+      __TEXT__: (name, data) -> pContent.push data
+      __END__: ->
+        cls = " class=\"#{cls}\"" if cls
+        containerContent.push ['', "<p#{cls}>"]
+        containerContent.push ['  ', pContent.join '']
+        containerContent.push ['', '</p>']
+
+    __END__: ->
+      wrappedClass = " class=\"#{wrappedClass}\"" if wrappedClass
+
+      container.push ['', """
+        <div#{wrappedClass}>
+      """]
+      container.push ['  ', indentedJoin(containerContent).trim()]
+      container.push ['', """
+        </div>
+      """]
+      pageContent = indentedJoin container
 
   __END__: ->
     headEnd()
