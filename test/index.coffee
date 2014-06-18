@@ -51,7 +51,7 @@ describe 'smal-bootstrap', ->
           <div class="container">
 
 
-          </div> <!-- /container -->
+          </div> <!-- .container -->
 
           <!-- Bootstrap core JavaScript
           ================================================== -->
@@ -171,7 +171,7 @@ describe 'smal-bootstrap', ->
                 <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/components/#navbar" role="button">View navbar docs »</a>
               </p>
             </div>
-          </div> <!-- /container -->
+          </div> <!-- .container -->
 
           <!-- Bootstrap core JavaScript
           ================================================== -->

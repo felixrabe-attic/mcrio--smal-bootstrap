@@ -287,7 +287,7 @@ bootstrapConversion = ->
     html.push ['      ', pageContent.trimRight()]
 
     html.push ['    ', """
-      </div> <!-- /container -->
+      </div> <!-- .container -->
     """]
 
     html.push ['    ', """
