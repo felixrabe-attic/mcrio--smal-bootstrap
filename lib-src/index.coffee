@@ -24,7 +24,7 @@ h = htmlEscape = do ->
     return string unless possible.test string
     string.replace badChars, escChar
 
-beginningOfLine = /^/mg
+beginningOfLine = /^(?=.)/mg
 
 ind = (indent, string) ->
   string.replace beginningOfLine, indent
