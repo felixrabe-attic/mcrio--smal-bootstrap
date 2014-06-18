@@ -1,6 +1,6 @@
 {
   "name": "smal-bootstrap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "SMAL-based DSL for Twitter Bootstrap",
   "main": "./lib",
   "scripts": {
