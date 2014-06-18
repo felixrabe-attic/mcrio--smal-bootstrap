@@ -32,7 +32,7 @@ describe 'smal-bootstrap', ->
 
     '''
 
-  it 'should be able to build a standard example', ->
+  it 'should be able to build examples/navbar-static-top', ->
     eq '''
       // http://getbootstrap.com/examples/navbar-static-top/
 
