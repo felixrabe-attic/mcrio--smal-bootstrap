@@ -10,7 +10,13 @@ describe 'smal-bootstrap', ->
 
   before ->
     eq = (input, expected) ->
-      expect(index input).to.equal expected  # just compares strings, no deep equal needed
+      actual = index input
+      try
+        expect(actual).to.equal expected  # just compares strings, no deep equal needed
+      catch err
+        err.message = 'not equal'
+        err.showDiff = false
+        throw err
 
   it 'should accept empty input', ->
     eq '', '''
